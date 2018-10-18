@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,jsonify
 import tweepy
 from textblob import TextBlob
-
+print "Hello world"
 
 consumer_key = 'HcWuxEn7uMvsBth3z9oBNBWkQ'
 consumer_secret = 'f5rM7IDFQF4yGCWa1VTvrOCukuHl3DPyeBw38E6hthiTRFQnxi'
