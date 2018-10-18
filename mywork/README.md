@@ -1,0 +1,10 @@
+# Disaster-Monitoring-System
+
+Analyse social media to monitor disaster events across the globe and to provide real time information about it.
+
+Natural disaster are mostly random and highly unperdictable in nature but we can make use of vast pool of information coming from social media platforms like Facebook, Twitter, etc to find out any such event in real time by applying machine learning algorithm to the real time data generated in these social media platform to find out an occurence of any such event, to find out most severly affected zones where people need the most help. We can make use of this data to alert disaster relief teams and also inform concerned authorities who in turn can take necessary action based on the real time analysis done on social media data.
+
+Our main idea is to built a website backed with machine learning algorithms in backened which can analyses Twitter data in real time. For our system we are restricting ourselves to just Twitter data only. We are also restricting ourselves to just the analysis of text data only. The reason for the need of this system is that every second Twitter generates vast amount of data which makes is impossible for manually looking out for any such disaster related tweets. Our system will overcome this disadvantage by extracting  tweets related to disaster related issue automatically any also provind useful information about it like most affected areas, most vulnearble area, etc. Anyone can make use of our system to know about any such natural disaster event anywhere in the world.
+
+We will use classification algorithm to segregate all data from the data required for our purpose and the use the power of natural language processing to generate useful insights about the disaster, its type, intensity, areas most severely affected etc. We will render all this information through a website so that it can be accessed by anyone anywhere globally. It will display all the recent disaster events and provide information on them plus a real time analysis to detect occurences of any new natural disaster.   
+
