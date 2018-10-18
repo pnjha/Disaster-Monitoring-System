@@ -35,7 +35,7 @@ def search():
 
 
     search_tweet = request.form.get("search_query")
-    return search_tweet
+    
     # t = [[]]
     t = []
     tweets = api.search(search_tweet, tweet_mode='extended')

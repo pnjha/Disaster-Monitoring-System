@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log(search_query);
 
-        request.open('POST', '');
+        request.open('/','POST');
 
         // Callback function for when request completes
         request.onload = () => {
