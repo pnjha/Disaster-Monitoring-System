@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add data to send with request
 
-        const data = new FormData();
+        let data = new FormData();
         data.append('search_query', search_query);
         console.log(data);
         // Send request
