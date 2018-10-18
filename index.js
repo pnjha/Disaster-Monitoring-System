@@ -3,9 +3,6 @@ function sendreq(){
 }
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#form').onsubmit = () => {
