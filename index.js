@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        
+        console.log(search_query);
+
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -40,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Add data to send with request
+
         const data = new FormData();
         data.append('search_query', search_query);
         console.log(data);
