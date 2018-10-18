@@ -30,8 +30,8 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
-def index():
-	print "Hello world"    
+def hello_world():
+	return "Hello world"    
 	#return render_template('index.html')
 
 # @app.route("/search",methods=["POST"])
