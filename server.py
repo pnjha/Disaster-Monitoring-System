@@ -20,12 +20,20 @@ api = tweepy.API(auth)
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return render_template('index.html')
+counter = 0
 
-@app.route("/search",methods=["POST"])
+# @app.route("/")
+# def index():
+#     return render_template('index.html')
+
+@app.route("/",methods=["POST"])
 def search():
+
+	if (counter == 0):
+		counter = 1
+		return render_template('index.html')
+
+
     search_tweet = request.form.get("search_query")
     return search_tweet
     # t = [[]]
