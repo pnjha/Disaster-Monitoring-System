@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('POST', '/search');
+        request.open('GET', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('POST', '/search');
+        request.open('GET', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
    };
 
 
-      document.querySelector('#nsenti').onclick = () =>{
+    document.querySelector('#nsenti').onclick = () =>{
      const senti = 'n';
      document.querySelector('#search_list').innerHTML="";
 
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('POST', '/search');
+        request.open('GET', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('POST', '/search');
+        request.open('GET', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('POST', '/search');
+        request.open('GET', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
