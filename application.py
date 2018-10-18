@@ -1,6 +1,13 @@
 from flask import Flask,render_template,request,jsonify
 import tweepy
 from textblob import TextBlob
+
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+
 print "Hello world"
 
 consumer_key = 'HcWuxEn7uMvsBth3z9oBNBWkQ'
