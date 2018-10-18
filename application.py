@@ -30,7 +30,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	return render_template('index.html')
+	return "Prakash"
+    # return render_template('index.html')
 
 # @app.route("/search",methods=["POST"])
 # def search():
