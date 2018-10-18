@@ -33,7 +33,8 @@ def search():
         t.append([tweet.full_text,polarity,subjectivity])
         # t.append(tweet.full_text)
 
-    return jsonify({"success":True,"tweets":t})
+    return "here"    
+    #return jsonify({"success":True,"tweets":t})
 
 # if __name__ == '__main__':
 #     app.run()
