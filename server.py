@@ -29,7 +29,7 @@ counter = 0
 @app.route("/",methods=["POST"])
 def search():
 
-	if (counter == 0):
+	if counter == 0:
 		counter = 1
 		return render_template('index.html')
 
