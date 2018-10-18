@@ -30,7 +30,7 @@ def search():
     search_tweet = request.form.get("search_query")
     
     # t = [[]]
-    t = []
+    t = ["peacock"]
     tweets = api.search(search_tweet, tweet_mode='extended')
     for tweet in tweets:
         polarity = TextBlob(tweet.full_text).sentiment.polarity
