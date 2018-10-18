@@ -10,9 +10,10 @@
 
 
 
-from flask import Flask,render_template,request,jsonify
-import tweepy
-from textblob import TextBlob
+from flask import Flask
+# ,render_template,request,jsonify
+# import tweepy
+# from textblob import TextBlob
 
 
 # consumer_key = 'HcWuxEn7uMvsBth3z9oBNBWkQ'
@@ -48,7 +49,7 @@ def index():
 #     return jsonify({"success":True,"tweets":t})
 
 if __name__ == '__main__':
-    app.index()
+    app.run()
 #---------------------------------------------------------------------------
 
 
