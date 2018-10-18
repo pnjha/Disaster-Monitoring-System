@@ -22,17 +22,12 @@ app = Flask(__name__)
 
 counter = 0
 
-# @app.route("/")
-# def index():
-#     return render_template('index.html')
+@app.route("/")
+def index():
+    return render_template('index.html')
 
-@app.route("/",methods=["POST"])
+@app.route("/search",methods=["POST"])
 def search():
-
-	if counter == 0:
-		counter = 1
-		return render_template('index.html')
-
 
     search_tweet = request.form.get("search_query")
     
