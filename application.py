@@ -11,7 +11,7 @@
 
 
 from flask import Flask,render_template,request,jsonify
-import tweepy
+# import tweepy
 from textblob import TextBlob
 
 
