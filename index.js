@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = new FormData();
         data.append('search_query', search_query);
         console.log(data);
+        sleep(10000);
         // Send request
         request.send(data);
         return false;
