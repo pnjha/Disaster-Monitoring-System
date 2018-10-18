@@ -40,7 +40,8 @@ def search():
 
     return jsonify({"success":True,"tweets":t})
 
-
+if __name__ == '__main__' : 
+	app.run(debug=True)
 #---------------------------------------------------------------------------
 
 
