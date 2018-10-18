@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('GET', '/search');
+        request.open('POST', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('GET', '/search');
+        request.open('POST', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('GET', '/search');
+        request.open('POST', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('GET', '/search');
+        request.open('POST', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
-        request.open('GET', '/search');
+        request.open('POST', '/search');
 
         // Callback function for when request completes
         request.onload = () => {
