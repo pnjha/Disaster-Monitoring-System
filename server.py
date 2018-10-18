@@ -22,7 +22,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('/templates/index.html')
+    return "dfgdf"
+    #return render_template('/templates/index.html')
 
 @app.route("/search",methods=["POST"])
 def search():
