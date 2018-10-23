@@ -36,8 +36,8 @@ def index():
 
     result = jsonify({"success":True,"tweets":t})
 
-    return render_template('index.html', rows = result)
-
+    # return render_template('index.html', rows = result)
+    return "Hello Prakash"
 
 # @app.route("/search/",methods=['GET','POST'])
 # def search():
