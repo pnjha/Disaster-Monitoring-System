@@ -33,106 +33,26 @@
 
     <body>
 
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-offset-1 text">
-                            <h1><strong>Tweets</strong> Analysis</h1>
-                            <div class="description">
-                            	<p>
-	                            	Search for your favorite topic in twitter, using <strong>Sentiment</strong> filter!
-                            	</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="row">
-
-                        <div class="col-sm-12  form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>What tweets you want to see!</h3>
-                            		<p>Use the sentiment and factual filters below </p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-twitter"></i>
-                        		</div>
-                            </div>
-
-                            <div class="form-bottom">
-			                    <form role="form" id="form" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="tweet_search" placeholder="What do you want to search about.." class="form-username form-control" id="form-username">
-			                        </div>
-
-                                    <div class="row search_tweets">
-                                                 <div class="col-sm-offset-3 col-sm-6">
-                                                       <button id="search_btn" class="btn">Search Tweets</button>
-                                                 </div>
-                                        </div>
-
-                                    <div class="row reset_filter">
-                                                 <div class="col-sm-offset-3 col-sm-6">
-                                                       <button data-toggle="tooltip" data-placement="top" title="Show all Tweets"  class="btn">Reset Filters</button>
-                                                 </div>
-                                        </div>
-
-
-                                    <div class="row">
-                                        <div class="col-sm-4 col-sm-offset-1">
-                                            <div class="row">
-                                                 <div class="col-sm">
-                                                      <button  data-toggle="tooltip" data-placement="left" title="Show only Positive Tweets" class="btn" id="psenti">Positive Tweets</button>
-                                                 </div>
-                                                 <div class="col-sm">
-                                                        <button  data-toggle="tooltip" data-placement="left" title="Show only Negative Tweets"  class="btn" id="nsenti">Negative Tweets</button>
-                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-4 col-sm-offset-2">
-                                            <div class="row">
-                                                 <div class="col-sm">
-                                                      <button data-toggle="tooltip" data-placement="left" title="Tweets which are Opinion"  id="opi" class="btn">Opinion Tweet</button>
-                                                 </div>
-                                                 <div class="col-sm">
-                                                        <button  data-toggle="tooltip" data-placement="left" title="Factual Tweets"  id="fac" class="btn">Factual Tweet</button>
-                                                 </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-
-
-
-
-			                    </form>
-		                    </div>
-                        </div>
-
-                    </div>
-
-                    <div id="search_result">
-                        <ol id="search_list">
-
-                        </ol>
-                    </div>
-
-                </div>
-            </div>
-            
-        </div>
-
+        <fieldset>
+            <legend>User Details</legend>
+            <table border = 1 cellspacing=5 width=50% height=50px bgcolor="#ffff9f">
+              <tr>
+              <th></td>
+                  <th>Name</td>
+              <th>Marks</td>
+               </tr>
+               
+               {% for row in rows if row["tweets"] %}
+                  <tr>
+                     <td> {{loop.index}}</td>
+                     <td>{{row["tweets"]}}</td>
+                  </tr>
+           {% else %}
+              <h1>no tweets found!</h1>
+               {% endfor %}
+            </table> 
+            <fieldset>
+      
 
         <!-- Javascript -->
         <script src="jquery-1.11.1.min.js"></script>
