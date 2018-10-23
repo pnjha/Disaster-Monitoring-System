@@ -23,7 +23,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-    search_tweet = "disaster"
+    search_tweet = "natural disaster"
     
     # t = [[]]
     t = []
