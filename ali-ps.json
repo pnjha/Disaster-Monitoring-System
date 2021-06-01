@@ -1,0 +1,487 @@
+{
+  "ROSTemplateFormatVersion": "2015-09-01",
+  "Description": "ROS for Alicloud RDS PostgreSQL Instance.",
+  "Parameters": {
+    "Category": {
+      "Default": "HighAvailability",
+      "Type": "String",
+      "Description": "The edition of the instance. Valid values:\nBasic: specifies to use the Basic Edition.\nHighAvailability: specifies to use the High-availability Edition.",
+      "AllowedValues": [
+        "Basic",
+        "HighAvailability"
+      ]
+    },
+    "MasterUsername": {
+      "Description": "Master user name of DB instance.",
+      "Default": "prakash",
+      "MinLength": 2,
+      "AllowedPattern": "[a-z0-9_]*",
+      "MaxLength": 16,
+      "Type": "String"
+    },
+    "EngineVersion": {
+      "Default": 10,
+      "Type": "String",
+      "Description": "Database instance version of the relative engine type.",
+      "AllowedValues": [
+        "10",
+        "11"
+      ]
+    },
+    "LogBackupRetentionPeriod": {
+      "Default": 7,
+      "Type": "Number",
+      "Description": "The retention period of the data backup. Value range: 7 to 730. The default value is the original value. Note When the BackupPolicyMode parameter is set to LogBackupPolicy, this parameter is required."
+    },
+    "DBInstanceNetType": {
+      "Default": "Intranet",
+      "Type": "String",
+      "Description": "Type of network connection to DB instance.",
+      "AllowedValues": [
+        "Internet",
+        "Intranet"
+      ]
+    },
+    "MasterUserType": {
+      "Default": "Admin@1234",
+      "Type": "String",
+      "Description": "Privilege type of account.\n Normal: Common privilege.\n Super: High privilege.\nThe default value is Super.",
+      "AllowedValues": [
+        "Normal",
+        "Super"
+      ]
+    },
+    "PreferredBackupTime": {
+      "Default": "00:00Z-01:00Z",
+      "Type": "String",
+      "Description": "Preferred Backup Time. Tha patten is HH:mmZ-HH:mmZ.",
+      "AllowedValues": [
+        "00:00Z-01:00Z",
+        "01:00Z-02:00Z",
+        "02:00Z-03:00Z",
+        "03:00Z-04:00Z",
+        "04:00Z-05:00Z",
+        "05:00Z-06:00Z",
+        "06:00Z-07:00Z",
+        "07:00Z-08:00Z",
+        "08:00Z-09:00Z",
+        "09:00Z-10:00Z",
+        "10:00Z-11:00Z",
+        "11:00Z-12:00Z",
+        "12:00Z-13:00Z",
+        "13:00Z-14:00Z",
+        "14:00Z-15:00Z",
+        "15:00Z-16:00Z",
+        "16:00Z-17:00Z",
+        "17:00Z-18:00Z",
+        "18:00Z-19:00Z",
+        "19:00Z-20:00Z",
+        "20:00Z-21:00Z",
+        "21:00Z-22:00Z",
+        "22:00Z-23:00Z",
+        "23:00Z-24:00Z"
+      ]
+    },
+    "EncryptionKey": {
+      "Default": "3b6b5bb5-5f6f-4440-b5d6-203c9644340c",
+      "Type": "String",
+      "Description": "The ID of the encryption key that is used to encrypt data on SSDs in the region. You can view the encryption key ID in the Key Management Service (KMS) console. You can also create an encryption key."
+    },
+    "MultiAZ": {
+      "Default": true,
+      "Type": "Boolean",
+      "Description": "Whether DB instances will be deployed in multiple availability zones. Default to false."
+    },
+    "VpcId": {
+      "Default": "vpc-gw8gxjfhv56oj88mq90di",
+      "Type": "String",
+      "Description": "ID of VPC where the DB Instance will be deployed."
+    },
+    "ConnectionMode": {
+      "Default": "Safty",
+      "Type": "String",
+      "Description": "Connection Mode for database instance,support 'Performance' and 'Safty' mode. Default is Safty.",
+      "AllowedValues": [
+        "Performance",
+        "Safty"
+      ]
+    },
+    "VSwitchId": {
+      "Default": "vsw-gw86psdkrrw2wr7gbpagc",
+      "Type": "String",
+      "Description": "The vSwitch id of created instance. For VPC network, the property is required."
+    },
+    "DBInstanceClass": {
+      "Default": "pg.n2.small.1",
+      "Type": "String",
+      "Description": "Database instance type. Refer the RDS database instance type reference, such as 'rds.mys2.large', 'rds.mss1.large', 'rds.pg.s1.small' etc"
+    },
+    "DBIsIgnoreCase": {
+      "Default": 1,
+      "Type": "Number",
+      "Description": "Specifies whether table names are case-sensitive. Valid values:\n1: Table names are not case-sensitive. This is the default value.\n0: Table names are case-sensitive.",
+      "AllowedValues": [
+        0,
+        1
+      ]
+    },
+    "DBName": {
+      "Default": "mydb",
+      "Type": "String",
+      "Description": "The name of the default database which will be created after instance is provisioned."
+    },
+    "DBTimeZone": {
+      "Default": "+08:00",
+      "Type": "String",
+      "Description": "The UTC time zone of the instance. Valid values: -12:00 to +12:00. The time zone must be an integer value such as +08:00. Values such as +08:30 are not allowed."
+    },
+    "BackupPolicyMode": {
+      "Default": "LogBackupPolicy",
+      "Type": "String",
+      "Description": "xx",
+      "AllowedValues": [
+        "DataBackupPolicy",
+        "LogBackupPolicy"
+      ]
+    },
+    "RoleARN": {
+      "Default": "acs:ram::1035148812147007:role/aliyunrdsinstanceencryptiondefaultrole",
+      "Type": "String",
+      "Description": "The Alibaba Cloud Resource Name (ARN) provided to the service account of the instance by your Alibaba Cloud account to connect to KMS. You can copy the ARN from the RAM console."
+    },
+    "ZoneId": {
+      "Default": "eu-central-1a",
+      "Type": "String",
+      "Description": "For HA deployment, it is zone where the written instance is deployed. For Basic deployment, it is the only zone."
+    },
+    "DBInstanceStorageType": {
+      "Default": "cloud_essd",
+      "Type": "String",
+      "Description": "The storage type of the instance. Valid values: cloud_ssd: specifies to use standard SSDs. cloud_essd: specifies to use enhanced SSDs.",
+      "AllowedValues": [
+        "cloud_ssd",
+        "cloud_essd"
+      ]
+    },
+    "BackupRetentionPeriod": {
+      "Default": 7,
+      "Type": "Number",
+      "Description": "The retention period of the data backup. Value range: 7 to 730. The default value is the original value. Note When the BackupPolicyMode parameter is set to LogBackupPolicy, this parameter is required."
+    },
+    "PreferredBackupPeriod": {
+      "Default": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday",
+      "Type": "CommaDelimitedList",
+      "ConstraintDescription": "Allowed values are [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\", \"Sunday\"]",
+      "Description": "The backup period. Separate multiple values with commas (,). The default value is the original value. Valid values:Monday Tuesday Wednesday Thursday Friday Saturday Sunday Note When the BackupPolicyMode parameter is set to DataBackupPolicy, this parameter is required."
+    },
+    "DBInstanceStorage": {
+      "Description": "Size of DB instance",
+      "Default": 20,
+      "Type": "Number",
+      "MaxValue": 2000,
+      "MinValue": 20,
+      "ConstraintDescription": "The size range of RDS instances is 20 - 2000, Incrementing in every 5, unit GB."
+    },
+    "SQLCollectorStatus": {
+      "Default": "Disabled",
+      "Type": "String",
+      "Description": "Specifies whether to enable or disable the SQL Explorer (SQL audit) feature.",
+      "AllowedValues": [
+        "Enable",
+        "Disabled"
+      ]
+    },
+    "DBInstanceDescription": {
+      "Default": "mydb",
+      "Type": "String",
+      "Description": "Description of DB Instance."
+    },
+    "DBDescription": {
+      "Default": "Logical DB of this DB instance",
+      "Type": "String",
+      "Description": "Description the default database which will be created."
+    },
+    "Tags": {
+      "Default": {},
+      "Type": "Json",
+      "Description": "The tags of an instance.\nYou should input the information of the tag with the format of the Key-Value, such as {\"key1\":\"value1\",\"key2\":\"value2\", ... \"key5\":\"value5\"}.\nAt most 5 tags can be specified.\nKey\nIt can be up to 64 characters in length.\nCannot begin with aliyun.\nCannot begin with http:// or https://.\nCannot be a null string.\nValue\nIt can be up to 128 characters in length.\nCannot begin with aliyun.\nCannot begin with http:// or https://.\nCan be a null string."
+    },
+    "PayType": {
+      "Default": "Postpaid",
+      "Type": "String",
+      "Description": "Pay type of DB instance.",
+      "AllowedValues": [
+        "Postpaid",
+        "Prepaid"
+      ]
+    },
+    "MasterUserPassword": {
+      "Description": "The master password for the database instance.",
+      "Default": "Initial0",
+      "MinLength": 8,
+      "AllowedPattern": "[a-zA-Z0-9_]*",
+      "NoEcho": true,
+      "MaxLength": 32,
+      "Type": "String"
+    },
+    "DBCharacterSetName": {
+      "Default": "UTF8",
+      "Type": "String",
+      "Description": "Character set of the default database which will be created."
+    },
+    "MaintainTime": {
+      "Default": "03:00Z-04:00Z",
+      "Type": "String",
+      "Description": "The period during which the maintenance performs. The format is HH:mmZ-HH:mmZ."
+    },
+    "AllocatePublicConnection": {
+      "Default": false,
+      "Type": "Boolean",
+      "Description": "Whether to provide internet access connection endpoint."
+    },
+    "SecurityIPList": {
+      "Default": "0.0.0.0/0",
+      "Type": "String",
+      "Description": "Security ip to access the database instance, combine with comma, 0.0.0.0/0 means no limitation."
+    }
+  },
+  "Outputs": {
+    "InnerPort": {
+      "Condition": "IsIntranet",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "InnerPort"
+        ]
+      }
+    },
+    "PublicConnectionString": {
+      "Condition": "IsPublicAccessible",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "PublicConnectionString"
+        ]
+      }
+    },
+    "InnerIPAddress": {
+      "Condition": "IsIntranet",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "InnerIPAddress"
+        ]
+      }
+    },
+    "DBInstanceId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "DBInstanceId"
+        ]
+      }
+    },
+    "PublicIPAddress": {
+      "Condition": "IsPublicAccessible",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "PublicIPAddress"
+        ]
+      }
+    },
+    "PublicPort": {
+      "Condition": "IsPublicAccessible",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "PublicPort"
+        ]
+      }
+    },
+    "InnerConnectionString": {
+      "Condition": "IsIntranet",
+      "Value": {
+        "Fn::GetAtt": [
+          "DBInstance",
+          "InnerConnectionString"
+        ]
+      }
+    }
+  },
+  "Conditions": {
+    "IsIntranet": {
+      "Fn::Equals": [
+        "Intranet",
+        {
+          "Ref": "DBInstanceNetType"
+        }
+      ]
+    },
+    "IsPublicAccessible": {
+      "Fn::Or": [
+        {
+          "Fn::Equals": [
+            true,
+            {
+              "Ref": "AllocatePublicConnection"
+            }
+          ]
+        },
+        {
+          "Fn::Not": "IsIntranet"
+        }
+      ]
+    },
+    "IsMultiAZ": {
+      "Fn::Equals": [
+        true,
+        {
+          "Ref": "MultiAZ"
+        }
+      ]
+    }
+  },
+  "Resources": {
+    "DBInstance": {
+      "Type": "ALIYUN::RDS::DBInstance",
+      "Properties": {
+        "Category": {
+          "Ref": "Category"
+        },
+        "DBMappings": [
+          {
+            "DBDescription": {
+              "Ref": "DBDescription"
+            },
+            "CharacterSetName": {
+              "Ref": "DBCharacterSetName"
+            },
+            "DBName": {
+              "Ref": "DBName"
+            }
+          }
+        ],
+        "MasterUsername": {
+          "Ref": "MasterUsername"
+        },
+        "DBInstanceStorageType": {
+          "Ref": "DBInstanceStorageType"
+        },
+        "LogBackupRetentionPeriod": {
+          "Ref": "LogBackupRetentionPeriod"
+        },
+        "DBInstanceNetType": {
+          "Ref": "DBInstanceNetType"
+        },
+        "MasterUserType": {
+          "Ref": "MasterUserType"
+        },
+        "PreferredBackupTime": {
+          "Ref": "PreferredBackupTime"
+        },
+        "EncryptionKey": {
+          "Ref": "EncryptionKey"
+        },
+        "Engine": "PostgreSQL",
+        "BackupPolicyMode": {
+          "Ref": "BackupPolicyMode"
+        },
+        "VpcId": {
+          "Ref": "VpcId"
+        },
+        "ConnectionMode": {
+          "Ref": "ConnectionMode"
+        },
+        "SSLSetting": "EnabledForInnerConnection",
+        "VSwitchId": {
+          "Fn::If": [
+            "IsMultiAZ",
+            {
+              "Fn::Sub": "${VSwitchId},Auto"
+            },
+            {
+              "Ref": "VSwitchId"
+            }
+          ]
+        },
+        "DBInstanceClass": {
+          "Ref": "DBInstanceClass"
+        },
+        "DBIsIgnoreCase": {
+          "Ref": "DBIsIgnoreCase"
+        },
+        "DBTimeZone": {
+          "Ref": "DBTimeZone"
+        },
+        "RoleARN": {
+          "Ref": "RoleARN"
+        },
+        "ZoneId": {
+          "Ref": "ZoneId"
+        },
+        "SlaveZoneIds": {
+          "Fn::If": [
+            "IsMultiAZ",
+            [
+              "Auto"
+            ],
+            {
+              "Ref": "ALIYUN::NoValue"
+            }
+          ]
+        },
+        "EngineVersion": {
+          "Fn::FindInMap": [
+            "Versions",
+            {
+              "Ref": "EngineVersion"
+            },
+            "MinorVersion"
+          ]
+        },
+        "BackupRetentionPeriod": {
+          "Ref": "BackupRetentionPeriod"
+        },
+        "PreferredBackupPeriod": {
+          "Ref": "PreferredBackupPeriod"
+        },
+        "DBInstanceStorage": {
+          "Ref": "DBInstanceStorage"
+        },
+        "SQLCollectorStatus": {
+          "Ref": "SQLCollectorStatus"
+        },
+        "DBInstanceDescription": {
+          "Ref": "DBInstanceDescription"
+        },
+        "Tags": {
+          "Ref": "Tags"
+        },
+        "PayType": "Postpaid",
+        "MasterUserPassword": {
+          "Ref": "MasterUserPassword"
+        },
+        "MaintainTime": {
+          "Ref": "MaintainTime"
+        },
+        "AllocatePublicConnection": {
+          "Ref": "AllocatePublicConnection"
+        },
+        "SecurityIPList": {
+          "Ref": "SecurityIPList"
+        }
+      }
+    }
+  },
+  "Mappings": {
+    "Versions": {
+      "10": {
+        "MinorVersion": "10.0"
+      },
+      "11": {
+        "MinorVersion": "11.0"
+      }
+    }
+  }
+}
